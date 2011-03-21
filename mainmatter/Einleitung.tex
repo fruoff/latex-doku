@@ -1,0 +1,202 @@
+\chapter{Kurze Einführung in \LaTeX}
+\label{chapter:introduction}
+
+In diesem Kapitel \ref{chapter:introduction} werden die wichtigsten LaTeX-Konstrukte kurz vorgestellt. Es empfielt sich, das PDF-Dokument mit dem \LaTeX - Quelltext zu vergleichen, um die Syntax zu erlernen. Viele Quelltextblöcke aus diesem Dokument können einfach in eingene Dokumente kopiert werden und benötigen dann nur noch geringe Anpassungen, so z.B. zum Einbinden von Grafiken, was in Abschnitt \ref{section:figures} vorgestellt wird.
+
+\section{Formeln}
+\label{section:equations}
+
+Dieser Abschnitt befaßt sich mit der Verwendung von Formeln.
+Das PDF-Dokument \textit{short-math-guide.pdf} ist eine gute Anlaufstelle bei Fragen und Problemen (siehe Ordner: \textsc{lesenswertes}).
+
+\subsection{Inline-Formeln}
+\label{subsection:inlineEquation}
+
+Inline-Formeln stehen mittem im Textfluss. Dazu wird die Formel durch \$-Zeichen im Quelltext eingerahmt. Beim Übersetzen des Dokumentes wird dann die schön gerenderte Formel erzeugt. Hier ein Beispiel: $e^x = \sum\limits_{n=0}^{\infty}\frac{x^n}{n!}$
+
+\subsection{Die equation-Umgebung}
+\label{subsection:defaultEquation}
+
+Die im vorherigen Abschnitt \ref{subsection:inlineEquation} eingeführte Formel schreibt sich mit Hilfe der \textit{equation}-Umgebung wie folgt:
+\begin{equation}
+\label{equation:expFunktion}
+ e^x = \sum\limits_{n=0}^{\infty}\frac{x^n}{n!}
+\end{equation}
+Hinweis: \textit{eqref} faßt die Nummer der Gleichung automatisch in runde Klammern, so dass beim Referenzieren auf Gleichungen die Klammern nicht aus versehen vergessen werden können.
+
+\section{Literaturquellen referenzieren}
+\label{section:literaturref}
+Die Literaturquellen werden mit Hilfe von \textsc{bibtex} referenziert. Die Quellen können in unterschiedlichen  ''.bib'' Dateien beschrieben sein (siehe z.B. \url{bibs/ruoff.bib}). Der Aufruf im Dokument erfolgt dann gemäß:
+\begin{verbatim}
+	\bibliographystyle{IEEEtran}
+	\bibliography{IEEEfull,bibs/ruoff,bibs/weitere_bib}
+\end{verbatim}
+Die Form der Abkürzungen steht in \url{bibs/IEEEfull.bib}, welche vor allen Bibliotheken eingebunden wird. Alle referenzierten  Quellen werden automatisch in das Literaturverzeichnis eingfügt, ein Fehler erscheint, wenn der \\cite\{\}-Befehl nicht verwendet wurde.
+
+Eine Quelle aus einer Datenbank wird so referenziert: \textbackslash cite\{bibtexkey\} und sieht dann so aus: \cite{DudaHartStork01}
+
+
+\section{Tabellen}
+\label{A}
+
+Dieser Abschnitt \ref{A} befaßt sich mit der Verwendung von Tabellen. Tabellen haben, im Gegensatz zu Grafiken, eine Überschrift, keine Unterschrift. In der Regel werden in Tabellen keine vertikalen Linien verwendet, horizontale Linien nur vor und nach Überschrift und Fußzeile, was aber durch die Verwendung von \texttt{\textbackslash toprule}, \texttt{\textbackslash midrule} und \texttt{\textbackslash bottomrule} automatisch eingefügt wird. Handelt es sich um eine lange Tabelle, die über mehrere Seiten umgebrochen werden kann, so kann der Typ \texttt{longtable} verwendet werden (siehe \texttt{frontmatter/Verzeichnisse.tex}), bei dem die Kopfzeile automatisch auf jeder Seite wiederholt wird.
+\begin{table}[hbt!]
+	\caption{Eine einfache Tabelle}
+  \begin{center}
+    \begin{tabular}{clr}
+      \toprule
+      \bf laufende & \bf Wert 1 & \bf Wert 2\\
+      \bf Nummer  & & \\
+      \midrule
+      $1$ &  $1\,000$ & $20$  \\
+      $2$ &  $1\,500$ & $40$  \\
+      \bottomrule
+    \end{tabular}
+  \end{center}
+\label{tab:table_1}
+\end{table}
+
+ \section{Listen und Aufzählungen}
+Listenumgebungen werden durch \texttt{\textbackslash begin\{itemize\}} eingeleitet. \texttt{\textbackslash end\{itemize\}} beendet die Umgebung. Jedem Eintrag wird ein \texttt{\textbackslash item} vorgestellt.
+Soll die Liste nummeriert werden, wird statt \textit{itemize} die \textit{enumerate}-Umgebung benutzt. Für Definitionslisten wird die \textit{description}-Umgebung verwendet.
+
+Das Ergebnis sieht dann so aus, wie in den folgenden beiden Beispielen.
+ 
+ 
+\begin{enumerate}
+	\item Erster Eintrag
+	\item Zweiter Eintrag
+	\begin{enumerate}
+		\item Listen können auch mehrere Ebenen enthalten
+	\end{enumerate}
+	\item Dritter Eintrag	
+\end{enumerate}
+
+\begin{itemize}
+	\item Liste, die
+	\item keine Nummerierung
+	\item enthält.
+\end{itemize}
+
+
+\section{Einheiten}
+Die korrekte Darstellung der SI-Einheiten ist für unmissverständliche Darstellungen unabdingbar. Hier hilft das  \textsc{SIunits}-Paket.
+
+Sowohl in Mathe-Umgebungen wie auch im Fließtext werden Zahlen mit Einheit durch \texttt{\textbackslash unit\{<Wert>\}\{<Einheit(en)>}\} dargestellt. Als Einheit wird z.B. \textbackslash meter, \textbackslash ampere oder \textbackslash kelvin verwendet. Eine vollständige Liste der unterstützten Einheiten ist in der Dokumentation zu dem Paket zu finden (Datei \textsc{SIunits.pdf} im Ordner \textsc{lesenswertes}) Die Ausgabe kann dann wie Folgt aussehen:
+\begin{itemize}
+	\item \unit{1,45}{\kilo\gram}
+	\item \unit{477,38}{\volt\meter\per\squaren\second}
+\end{itemize}
+
+Die Eingabe der Einheiten in dieser Form erscheint zunächst kompliziert, setzt alle Einheiten aber korrekt - nämlich gerade, mit einem verkleinerten Abstand zwischen Ziffer und Einheit und ohne Zeilenumbruch zwischen Zahl und Einheit.
+
+\section{Beispiele}
+Für Beispiele gibt es eine separate Umgebung, nämlich die \texttt{example} Umgebung.
+\begin{example}
+	Nummeriertes Beispiel ...
+	\label{exa:bsp_test}
+\end{example}
+
+\section{Grafiken}
+\label{section:figures}
+Zum Einbinden von Grafiken stehen in \LaTeX verschiedene Möglichkeiten zur Verfügung.
+
+Diese Vorlage geht davon aus, dass das Dokument NICHT mit \textit{pdflatex} sondern mit reinem \textit{latex}. Daher werden nur Vektorgrafikformate (.eps, .ps, .bmp, .pict) akzeptiert. Wird pdfLaTeX genutzt, können NUR Grafikdateien in den Formaten .jpeg, .png und .pdf genutzt werden. Das Übersetzen dieses Dokumentes wird daher voraussichtlich fehlschlagen.
+
+\subsection{EPS mit Textersetzungen (psfrag)}
+Dieser Abschnitt stellt kurz das Einfügen von Grafiken und das Ersetzen von Text innerhalb einer eps-Datei durch LaTeX-eigene Schriften und insbesonder auch Formeln vor. 
+
+Die Verwendung des \textit{PSfrag}-Packets wird in der \textit{psfrag-guide.pdf} Datei näher erklärt (siehe Ordner: \textsc{lesenswertes}).
+
+ACHTUNG: Die Ersetzungen sind erst in der PS/PDF-Datei an der gewünschten Stelle. In der DVI-Datei sind die Ersetzungen nur aufgelistet.
+\begin{figure}[!ht]
+	\centering
+	\psfragscanon
+	\psfrag{Sinuskurve}[][c]{$u(\varphi) = 1 \mathrm{V} \cdot \sin(\varphi)$}
+	\psfrag{phi / rad}[][r]{\large $\frac{\varphi}{\mathrm{rad}}$}
+	\psfrag{u / V}[][c][1][-90]{\large $\frac{u}{\mathrm{V}}$}
+	\includegraphics[width=0.8\textwidth]{sinus.eps}
+	\psfragscanoff
+	\caption{Sinusförmiger Spannungsverlauf}
+	\label{fig:sin}
+\end{figure}
+\clearpage
+
+\subsection{PS-Tricks}
+Mit PS-Tricks lassen sich Grafiken direkt im \LaTeX - Code 'malen'. Die beiden Folgenden Grafiken sind komplett mit PS-Tricks erstellt.
+\begin{figure}[htb!]
+	\centering
+	
+\begin{pspicture}[showgrid=false](8,5)
+	\pnode(0,0){A}
+	\pnode(4,0){B}
+	\pnode(0,4){C}
+	\pnode(4,4){D}
+	\pnode(8,4){E}
+	\pnode(8,0){F}
+	\resistor(C)(D){$R_{v_1}$}
+	\resistor(D)(E){$R_L$}
+	\LED(E)(F){$D_L$}
+	\Zener[labeloffset=-0.7](B)(D){$D_Z$}
+	\Ucc(A)(C){$U$}
+	\wire(A)(C)
+	\wire(A)(B)
+	\wire(F)(B)
+\end{pspicture}
+		\caption{Test mit PST-circ}
+\end{figure}
+
+
+\begin{figure}[h!]
+\centering
+	\begin{pspicture}(-2,-4)(2,4)
+	\pswall{-2,2.5}{2,3.5}{2,2.5}
+	\pnode(-1,1.5){A}
+	\pnode(-1,-1.5){B}
+	\pnode(1,1.5){C}
+	\pnode(0,-1.5){D}
+	\pnode(1,-1.5){E}
+	\pnode(0,-4){F}
+	
+	\cnode[fillstyle=solid,fillcolor=lightgray](0,-2.5){0.5}{Mass}
+	\rput[c](Mass){$m$}
+	
+	\psline{-}(A)(C)
+	\psline{-}(D)(B)
+	\psline{-}(D)(E)
+	\ncline{D}{Mass}
+	\psline{-}(0,1.5)(0,2.5)
+	
+	\psline[linewidth=2pt]{-}(1.6, -2.5)(2.4, -2.5)
+	\pnode(2,-2.5){Us}
+	\pnode(2,-4){Ue}
+	\ncline[arrows=|->, arrowsize=4pt]{Us}{Ue}
+	\ncput{\hspace{10mm}$u(t)$}
+	\ncline[arrows=->, arrowsize=4pt]{Mass}{F}
+	\ncput{\hspace{10mm}$f(t)$}
+	\resistor[dipolestyle=zigzag](B)(A){$k$}% spring
+	\dashpot(E)(C){$d$}% dashpot
+	\end{pspicture}
+	\caption{Gedämpfter Einmassenschwinger}
+	\label{fig:Einmassenschwinger}	
+\end{figure}
+
+
+\subsection{\texorpdfstring{\matlab}{Matlab} Plots}
+Zur Darstellung von Kurven (z.B. Simulationsergebnisse, Messergebnisse), die mit \matlab generiert wurden, können direkt \matlab-dat-Dateien in Latex eingelesen werden und die Achsen und Beschriftungen von Hand im \LaTeX-Quelltext ergänzt werden.
+
+\begin{figure}[!ht]
+	\centering
+	\psset{axesstyle = axes, xAxisLabel = $ \frac{f}{ \mathrm{Hz}}$, yAxisLabel = $ {\alpha , \beta } $}
+	\begin{psgraph}[arrows = ->, arrowscale=3, ticks = none, subticks = 4, Dx=10 , Dy =25 ](0,0)(0,0)(55,75){10cm}{5cm}
+	\readdata{\rayleigh}{img/alpha.dat}
+	\dataplot[plotstyle=curve,showpoints=false,linecolor=blue, linewidth=1.5pt]{\rayleigh}
+	\readdata{\rayleigh}{img/beta.dat}
+	\dataplot[plotstyle=curve,showpoints=false,linecolor=red, linewidth=1.5pt]{\rayleigh}
+	\rput(54,60){$\beta \sim f$}
+	\rput(5,45){$\alpha \sim \frac{1}{f}$}
+	\end{psgraph}
+	\caption{Rayleighdämpfungsparameter $\alpha$ und $\beta$}
+	\label{fig:Rayleigh}	
+\end{figure}
+

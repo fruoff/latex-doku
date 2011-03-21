@@ -1,0 +1,14 @@
+*.dvi
+*.tex~
+*.log
+*.toc
+*.aux
+*.ps
+*.???~
+*.*.backup
+*.blg
+*.lof
+*.out
+*.tdo
+*.lot
+*.bbl

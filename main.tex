@@ -1,0 +1,116 @@
+\documentclass[
+%draft,				% Entwurf --> Endversion mit final
+dvips,
+twoside,			% Doppelseiteiger Druck 
+a4paper, 			% Papierformat: DIN-A4
+12pt, 				% Standardschriftgroesse
+headsepline, 		% Trennlinie unter Kopfzeile
+plainheadsepline,	% Trennlinie auch auf Seiten mit Stil 'plain' (z. B. Kapitelanfaenge)
+% footsepline, 		% Trennlinie ueber Fusszeile
+% cleardoubleempty, 	% keine Kopf und Fusszeilen bei leeren Seiten
+titlepage,			% Dokument mit Titelseite
+BCOR1cm,			% Bindekorrektur
+bibliography=totoc,			% Literaturverzeichnis im Inhaltsverzeichnis
+index=totoc,
+listof=totoc,
+%openany,			% Kapitel koennen auch auf linker Seite beginnen
+%chapterprefix,		% Vor der Kapitelueberschrift wird "Kapitel" eingefuegt
+numbers=noenddot,	% Keine Punkte hinter der Kapitelnummer
+appendixprefix,		% Vor den Anhangkapiteln wird "Anhang" eingefuegt
+headings=small,		% Ueberschriftengroesse (smallheadings --> kleine Ueberschriften)
+toc=listof
+]
+{scrbook}
+
+%% Put your information in the {...} in the following commands
+\newcommand{\name}{Vorname Nachname} 
+\newcommand{\studenttitle}{Herr} % oder Frau
+\newcommand{\regnumber}{SA/DA 20xx / XX}
+\newcommand{\docType}{Diplomarbeit}
+\newcommand{\docTitle}{Titel der Arbeit}
+\newcommand{\abgabemonat}{Monat Jahr}
+\newcommand{\abgabedatum}{Tag.Monat.Jahr}
+\newcommand{\anfangsdatum}{Tag.Monat.Jahr}
+\newcommand{\university}{University ...}
+\newcommand{\institut}{Institut for ...}
+\newcommand{\fachgebiet}{Fachgebiet ...}
+\newcommand{\professor}{Prof. Dr.-Ing. Vorname Nachname}
+\newcommand{\betreuer}{Dipl.-Ing. Vorname Nachname}
+
+% Template-style
+\usepackage{emt}
+
+\usepackage[textwidth=1.5cm, textsize = tiny, color = red, dvistyle, ngerman, colorinlistoftodos]{todonotes}	% Entfernen mit [disable]
+
+% Declare own mathematical operators
+\DeclareMathOperator{\grad}{grad}	% Normale mathematische Funktion
+\DeclareMathOperator{\DIV}{div}
+\DeclareMathOperator{\rot}{rot}
+\renewcommand{\j}{\mathrm{j}}
+
+% Declare shortform for 'difficult' names
+\newcommand{\matlab}{$\textnormal{\textsc{Matlab}}^{\scriptstyle \circledR} $ } 
+
+% Declare hyphenation for single words, that are not known by the dictionary or where you wish a different hyphenation
+\hyphenation{
+Grafik-karten-pro-zes-sor % example. Please add your own
+}
+
+% Image-folder
+\graphicspath{{img/}}
+
+% PSTricks Makros
+\newcommand*\pswall[3]{ % Produces the symbol for a wall
+	\psframe[linecolor=white,fillstyle=hlines,hatchcolor=black](#1)(#2)
+	\psline[linecolor=black](#1)(#3)}
+
+
+%% Start of document
+\begin{document}
+\SIunits[mediumqspace,mediumspace] % Set options for SIunits-packet
+
+\frontmatter
+
+% Titelseite
+\include{frontmatter/title}
+\setcounter{page}{1} % set page-counter to one
+
+% Declaration of own work (may be dropped for some thesis)
+\include{frontmatter/erklaerung}
+\cleardoublepage
+
+\include{frontmatter/Verzeichnisse}
+\cleardoublepage
+
+\include{frontmatter/Kurzfassung}
+
+
+\mainmatter
+\include{mainmatter/Einleitung}
+% add your chapters here
+
+
+%%%%%%%%%%%%%%%%%%%%
+% this is where the backmatter starts
+%\backmatter % toggling this comment results in chapter names with or without capital numbering
+% the bibliography
+%\addcontentsline{toc}{chapter}{Literaturverzeichnis}
+% the bibliography shouldn't have a consecutive numbering
+\ihead{\leftmark}
+\bibliographystyle{alphadin} 		% alphabetical order ([Abc09]) 
+%\bibliographystyle{unsrtdin}		% Sortierung nach Reihenfolge der Zitate im Dokument ([1], ...) 
+\bibliography{bibs/IEEEfull,bibs/ruoff}
+\clearpage
+% but the appendix could
+\ihead{\thechapter~\leftmark}
+% the appendix is part of the backmatter, but uses capital numbering by default
+
+
+% Appendix
+% \pagenumbering{alph}
+\setpartpreamble[u,r][8cm]{\vspace{20mm}Erweiterte Informationen zu der vorliegenden Arbeit}\part*{Anhang}
+\appendixtoc
+\include{backmatter/Anhang}
+
+\end{document}
+%% End of document

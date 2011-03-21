@@ -1,0 +1,167 @@
+% Verwendete LaTeX Pakete
+\usepackage[ngerman]{babel,varioref}				% Neue deutsche Rechtschreibung
+\usepackage{lmodern}					% Schriftart
+\usepackage[squaren, binary, Gray, textstyle]{SIunits}	% DIN-format for units % Ubuntu-packet: texlive-science
+\usepackage{amssymb, amsmath, amsopn, bm}
+\usepackage{textcomp}					% non-italic greec letters in formulas. e.g. (\text{\textmu})
+\usepackage[T1]{fontenc}
+\usepackage{trfsigns}
+\usepackage[utf8, latin1]{inputenc}	% Erlaubt Umlaute im Text
+\usepackage{scrpage2}					% Neue KOMA Header
+\usepackage{eurosym}					% Euro-Symbol
+\usepackage{scrhack}					% use features fo package 'tocbasic' instead of '\float@addtolists'
+\usepackage{etex}							% extend space for dimensionings
+
+
+% Einbindung von Grafiken
+\usepackage[dvips]{color}
+\usepackage[dvips]{graphicx}			% Zum Laden von Grafiken
+\usepackage{subfig}						% Teilabbildungen in einer Abbildung
+%\usepackage{epsfig}						% Laden von eps-Grafiken (nicht bei pdfLaTeX)
+\usepackage{psfrag}						% Schriftarten in eps-Grafiken aendern (nicht bei pdfLaTeX)
+%\usepackage{wrapfig}					% Grafiken in Text anordnen
+%\usepackage{pictex}					% Graphen Zeichnen
+%	Einbinden von Grafiken in pdfLatex: .jpg, .png, .pdf, .mps 
+%	Einbinden von Grafiken in LaTex--> PS --> pdf: .eps, .ps, .bmp, .pict,  
+
+% PS-Tricks Pakete 
+\usepackage{pstricks}
+\usepackage{pstricks-add}	
+\usepackage{pst-xkey}
+\usepackage{pst-plot}
+\usepackage{pst-2dplot}
+%\usepackage{pst-func}
+\usepackage{pst-node}
+\usepackage{pst-circ}
+%\usepackage{makeplot}
+
+\usepackage{caption}
+
+% Tabellen
+\usepackage{multirow}
+\usepackage{multicol}
+\usepackage{longtable}
+\usepackage{booktabs}
+
+\usepackage{alltt, float}
+
+% BibTex Packete
+\usepackage{cite}
+\usepackage{bibgerm}
+
+% Quellcode
+\usepackage{verbatim}
+%\usepackage{moreverb}
+\usepackage{listings}
+\lstloadlanguages{C}
+
+% Verlinkung
+\usepackage[dvips, ps2pdf,
+pdftitle={\docType - \docTitle},
+pdfauthor={\name},
+% pdfborder = {false},
+% pdfhighlight = {/O},
+colorlinks,
+linkcolor = {black},
+urlcolor = {blue},
+citecolor = {blue},
+bookmarksopen = {true},
+bookmarksnumbered = {true},
+%linktocpage = {true},		% Zeilenumbruch im Abb-Verzeichnis, aber keine Verlinkung mehr in der Schrift im Inhaltsverzeichnis :(
+linktoc = {all},
+breaklinks = {true} % gibt Warnungen aus...
+]{hyperref}
+\usepackage{url}
+
+% Seitenlayout
+\pagestyle{scrheadings}				% Benutzung von Koma-Headern
+\ihead[\emph{\headmark}]{\emph{\headmark}}    
+\ohead[\pagemark]{\pagemark}
+\cfoot[]{}
+\ofoot[]{}
+\setheadsepline{.4pt}
+\renewcommand{\chapterpagestyle}{plain} 	% Seitenstil bei Kapitelanfang
+\renewcommand{\indexpagestyle}{plain}   	% Seitenstil bei Inhaltsverzeichnis
+\renewcommand{\titlepagestyle}{empty}   	% keine Kopfzeile bei Dokumentanfang
+
+% Margins
+\setlength{\topmargin}{-5.4mm}		% Oberer Rand bis zur Kopfzeile 1" + \topmargin
+\setlength{\headheight}{1.7\baselineskip}			% Hoehe der Kopfzeile
+\setlength{\headsep}{26pt}				% Abstand von Kopfzeile zu Text
+\setlength{\topskip}{18pt}				% Oberkante bis zur ersten Textzeile 
+\setlength{\oddsidemargin}{0mm}		% linker Rand fuer ungerade Seiten
+\setlength{\evensidemargin}{0mm}	% linker Rand fuer gerade Seiten 
+\setlength{\textwidth}{160mm}			% Breite des Seitentextes 
+\setlength{\textheight}{230mm}		% Hoehe des Seitentextes
+\setlength{\parskip}{1mm}					% Abstand zum naechsten Absatz
+
+
+\renewcommand{\baselinestretch}{1.50}\normalsize % 1.5 Facher Zeilenabstand
+
+% Captionlayout
+\captionsetup{format=hang,labelfont=bf}			% Abbildung Fett-Drucken % textfont = it
+\renewcommand{\lstlistingname}{Codebeispiel}	% Name fuer Quellcodeumgebung
+
+\clubpenalty = 10000                    % Schusterjungen und Hurenkinder vermeiden
+\widowpenalty = 10000                   % siehe dazu
+\displaywidowpenalty = 10000            % http://www.cs.uu.nl/wais/html/na-dir/de-tex-faq/part5.html
+
+
+
+% Kapitelnummerierungstiefe
+\setcounter{secnumdepth}{2}
+
+% Kapitelnummerierungstiefe im Inhaltsverzeichnis
+\setcounter{tocdepth}{2}
+
+\newtheorem{example}{Beispiel}[chapter]
+\newtheorem{definition}{Definition}
+
+
+% Ueberschriften anpassen
+\addtokomafont{disposition}{\rmfamily}
+\addtokomafont{part}{\fontsize{18}{18}\rmfamily}
+\addtokomafont{chapter}{\fontsize{16}{16} \rmfamily}
+\addtokomafont{section}{\fontsize{14}{12} \rmfamily}
+\addtokomafont{subsection}{\fontsize{12}{9} \rmfamily}
+\addtokomafont{subsubsection}{\fontsize{12}{9} \rmfamily}
+
+
+% Inhaltsverzeichnis und Anhangsverzeichnis definieren
+\usepackage{blindtext}
+
+\makeatletter% --> De-TeX-FAQ
+\newcommand*{\maintoc}{% Hauptinhaltsverzeichnis
+  \begingroup
+    \@fileswfalse% kein neues Verzeichnis oeffnen
+    \renewcommand*{\appendixattoc}{% Trennanweisung im Inhaltsverzeichnis
+      \value{tocdepth}=-10000 %  Anhaenge werden im Hauptinhaltsverzeichnis ausgeblendet
+    }%
+    \tableofcontents% Verzeichnis ausgeben
+  \endgroup
+}
+\newcommand*{\appendixtoc}{% Anhangsinhaltsverzeichnis
+  \begingroup
+    \edef\@alltocdepth{\the\value{tocdepth}}% tocdepth merken
+    \setcounter{tocdepth}{-10000}% Keine Verzeichniseintraege
+    \renewcommand*{\contentsname}{% Verzeichnisname aendern
+      Verzeichnis der Anh\"ange}%
+    \renewcommand*{\appendixattoc}{% Trennanweisung im Inhaltsverzeichnis
+      \setcounter{tocdepth}{\@alltocdepth}% tocdepth wiederherstellen
+    }%
+    \tableofcontents% Verzeichnis ausgeben
+    \setcounter{tocdepth}{\@alltocdepth}% tocdepth wiederherstellen
+  \endgroup
+}
+\newcommand*{\appendixattoc}{% Trennanweisung im Inhaltsverzeichnis
+}
+\g@addto@macro\appendix{% \appendix erweitern
+  \if@openright\cleardoublepage\else\clearpage\fi% Neue Seite
+  \addcontentsline{toc}{chapter}{\appendixname}% Eintrag ins Hauptverzeichnis
+  \addtocontents{toc}{\protect\appendixattoc}% Trennanweisung in die toc-Datei
+}
+\makeatother
+
+
+% Layout von Definitionslisten (Label in Standardschriftart)
+\setkomafont{descriptionlabel}{\rmfamily\bfseries}

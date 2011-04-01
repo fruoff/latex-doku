@@ -1,79 +1,84 @@
 \thispagestyle{empty}
 
 \begin{titlepage}
-	{
-		\begin{flushleft}
-				\hspace{10mm}\textbf{\institut}\\
-				\hspace{10mm}\university\\
-				\hspace{10mm}\fachgebiet\\
-				\hspace{10mm}\professor
-		\end{flushleft}
+  \begin{picture}(16, 3.5)(0, 20)
+    \put(0,   15){\includegraphics[height=21.3mm]{uni-logo.eps}}
+    \small
+    \put(350, 54){\textcolor{emt_blue}{\textsc{\textsf{Fakultät\\ für}}}}
+    \put(350, 41){\textcolor{emt_blue}{\textsc{\textsf{Elektrotechnik,}}}}
+    \put(350, 28){\textcolor{emt_blue}{\textsc{\textsf{Informatik und}}}}
+    \put(350, 15){\textcolor{emt_blue}{\textsc{\textsf{Mathematik}}}}
+    \put(350, -20){\textcolor{emt_blue}{\tiny{\textsf{Elektrische Messtechnik}}}}
+  \end{picture}
 
-		\begin{picture}(0,0)(0, -22.5)
-			\put(-35,5){\includegraphics[height=20mm]{uni-logo.eps}}
-			\put(310,5){\includegraphics[height=20mm]{fg-logo.eps}}
-		\end{picture}
-	}
+  \begin{center}
+    \vspace{25mm}
+    {\bfseries \large \docType}
 
-	\begin{center}
-		\vspace{10mm}
-		{\bfseries \large \docType}
+    \vspace{10mm}
+    {\bfseries \LARGE \docTitle}
 
-		\vspace{25mm}
-		{\bfseries \LARGE \docTitle}
+    \vspace{20mm}
+    {\large von \\[3mm] }
+    {\Large \name}\\[3mm]
+    {\itshape (Registriernummer: \regnumber)}
 
-		\vspace{25mm}
-		{\large von \\[3mm]}
-		{\Large \name}\\[3mm]
-		{\itshape (Registriernummer: \regnumber)}
+    \vspace{15mm}
+    {\large
+    \begin{tabular}{l l}
+      Betreuer:   & \professor \\
+                  & \betreuer \\
+    \end{tabular}}
 
-		\vspace{15mm}
-		{\large
-		\begin{tabular}{l l}
-			Betreuer: 	& \professor \\
-									& \betreuer \\
-		\end{tabular}}
+    \vspace{15mm}
+    {\large Paderborn im \abgabemonat }
 
-		\vspace{15mm}
-		{\large Paderborn im \abgabemonat }
-
-	\end{center}
+  \end{center}
+  \vfill
+  \begin{picture}(0, 0)(0, 0)
+    \put(0,   0){\tiny{Elektrische Messtechnik\cdot EIM-E\cdot Warburger Straße 100\cdot 33098 Paderborn}}
+    \put(340, -10){\includegraphics[height=16.2mm]{fg-logo.eps}}
+  \end{picture}
 \end{titlepage}
 
 
 % Zweite Titelseite
 \begin{titlepage}
-	{
-		\begin{flushleft}
-				\hspace{10mm}\textbf{\institut}\\
-				\hspace{10mm}\university\\
-				\hspace{10mm}\fachgebiet\\
-				\hspace{10mm}\professor
-		\end{flushleft}
+  \begin{picture}(16, 3.5)(0, 20)
+    \put(0,   15){\includegraphics[height=21.3mm]{uni-logo.eps}}
+    \small
+    \put(350, 54){\textcolor{emt_blue}{\textsc{\textsf{Fakultät\\ für}}}}
+    \put(350, 41){\textcolor{emt_blue}{\textsc{\textsf{Elektrotechnik,}}}}
+    \put(350, 28){\textcolor{emt_blue}{\textsc{\textsf{Informatik und}}}}
+    \put(350, 15){\textcolor{emt_blue}{\textsc{\textsf{Mathematik}}}}
+    \put(350, -20){\textcolor{emt_blue}{\tiny{\textsf{Elektrische Messtechnik}}}}
+  \end{picture}
 
-		\begin{picture}(0,0)(0, -22.5)
-			\put(-35,5){\includegraphics[height=20mm]{uni-logo.eps}}
-			\put(310,5){\includegraphics[height=20mm]{fg-logo.eps}}
-		\end{picture}
-	}
+  \vspace{10mm}
 
-	\vspace{5mm}
-	\begin{flushright}
-		Nr. \regnumber
-	\end{flushright}
+  \begin{flushright}
+    Nr. \regnumber
+  \end{flushright}
 
-	\vspace{15mm}
-	\begin{center}
-		\large
-		\docType \\[4mm] für \\[4mm]
-		\studenttitle \; \name \\
-	\end{center}
+  \vspace{15mm}
 
-	\vspace{15mm}
-	\begin{flushleft}
-		Thema: \docTitle			\\[30mm]
-		\professor 	\\[15mm]
-		Datum der Ausgabe: \anfangsdatum	\\[10mm]
-		Datum der Abgabe: \abgabedatum
-	\end{flushleft}
+  \begin{center}
+    \large
+    \docType \\[4mm] für \\[4mm]
+    \studenttitle \; \name \\
+  \end{center}
+
+  \vspace{15mm}
+
+  \begin{flushleft}
+    Thema: \docTitle      \\[30mm]
+    \professor  \\[15mm]
+    Datum der Ausgabe: \anfangsdatum  \\[10mm]
+    Datum der Abgabe: \abgabedatum
+  \end{flushleft}
+  \vfill
+  \begin{picture}(0, 0)(0, 0)
+    \put(0,   0){\tiny{Elektrische Messtechnik\cdot EIM-E\cdot Warburger Straße 100\cdot 33098 Paderborn}}
+    \put(340, -10){\includegraphics[height=16.2mm]{fg-logo.eps}}
+  \end{picture}
 \end{titlepage}
